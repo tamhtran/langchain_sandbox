@@ -14,16 +14,16 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
-def get_image_description(image_path):
+def get_image_description(image_path,recipe_name):
     image_base64 = encode_image(image_path)
 
-    prompt = """
-       You are given an image of the user's food.
- They says it's a Chicken Tikka Masala
- Figure out what kind of food is in the image (and its nutrition facts) and adjust the user's nutrition plan to include the food items in the image.
- Respond back to the user using <message></message> tags briefly explaining to them how you changed their nutrition plan based on the image they uploaded.
-  Figure out what type of ingrediants are in the image, provide description Also provide the updated nutrition plan.
-    """.format(image_base64=image_base64)
+    prompt = f"""
+           You are given an image of the user's food.
+           They say it's a {recipe_name}.
+           Figure out what kind of food is in the image (and its nutrition facts) and adjust the user's nutrition plan to include the food items in the image.
+           Respond back to the user using <message></message> tags briefly explaining to them how you changed their nutrition plan based on the image they uploaded.
+           Figure out what type of ingredients are in the image, provide description, and also provide the updated nutrition plan.
+        """.format(image_base64=image_base64)
 
     payload = {
         "model": "accounts/fireworks/models/firellava-13b",
@@ -50,5 +50,6 @@ def get_image_description(image_path):
 
 if __name__ == "__main__":
     test_image_path = "your_image.jpg"
-    explanation = get_image_description(test_image_path)
+    test_recipe_name = "your_recipe_name"
+    explanation = get_image_description(test_image_path, test_recipe_name)
     print(explanation)
