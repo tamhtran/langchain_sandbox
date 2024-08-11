@@ -1,3 +1,11 @@
 streamlit==1.26.0
 fireworks-ai
 python-dotenv
+langgraph
+langsmith
+langchain_anthropic
+langchain-openai
+langchain
+langserve
+fastapi
+uvicorn
