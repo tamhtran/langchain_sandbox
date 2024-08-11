@@ -1,4 +1,4 @@
-streamlit==1.26.0
+streamlit
 fireworks-ai
 python-dotenv
 langgraph
@@ -9,3 +9,5 @@ langchain
 langserve
 fastapi
 uvicorn
+langchain_community
+tavily-python
