@@ -38,19 +38,3 @@ class RetrieverGrader:
         return self.retrieval_grader.invoke( {"question": question, "document": document} )
 
 
-
-# Example usage
-if __name__ == "__main__":
-    retriever_grader = RetrieverGrader()
-
-    # Assuming `retriever` is an instance of a retriever that can invoke a search
-    question = "agent memory"
-    docs = retriever.invoke(question)
-
-    if docs and len(docs) > 1:
-        doc_txt = docs[1].page_content
-    else:
-        doc_txt = "No document retrieved."
-
-    result = retriever_grader.grade_document(question, doc_txt)
-    print(result)
